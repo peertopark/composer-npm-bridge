@@ -13,6 +13,7 @@ namespace Eloquent\Composer\NpmBridge;
 
 use Composer\IO\NullIO;
 use PHPUnit_Framework_TestCase;
+use Eloquent\Composer\NpmBridge\Core\VendorFinder;
 
 class NpmBridgeFactoryTest extends PHPUnit_Framework_TestCase
 {
@@ -25,7 +26,7 @@ class NpmBridgeFactoryTest extends PHPUnit_Framework_TestCase
 
     public function testCreateBridge()
     {
-        $expected = new NpmBridge($this->io, new NpmVendorFinder(), NpmClient::create());
+        $expected = new NpmBridge($this->io, VendorFinder::create(), NpmClient::create());
 
         $this->assertEquals($expected, $this->factory->createBridge($this->io));
     }

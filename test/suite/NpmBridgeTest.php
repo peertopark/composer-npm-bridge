@@ -23,7 +23,7 @@ class NpmBridgeTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->io = Phony::mock('Composer\IO\IOInterface');
-        $this->vendorFinder = Phony::mock('Eloquent\Composer\NpmBridge\NpmVendorFinder');
+        $this->vendorFinder = Phony::mock('Eloquent\Composer\NpmBridge\Core\VendorFinder');
         $this->client = Phony::mock('Eloquent\Composer\NpmBridge\NpmClient');
         $this->bridge = new NpmBridge($this->io->mock(), $this->vendorFinder->mock(), $this->client->mock());
 

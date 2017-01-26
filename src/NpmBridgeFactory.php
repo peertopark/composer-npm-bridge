@@ -12,6 +12,7 @@
 namespace Eloquent\Composer\NpmBridge;
 
 use Composer\IO\IOInterface;
+use Eloquent\Composer\NpmBridge\Core\VendorFinder;
 
 /**
  * Creates NPM bridges.
@@ -26,7 +27,7 @@ class NpmBridgeFactory
     public static function create()
     {
         return new self(
-            new NpmVendorFinder(),
+            VendorFinder::create(),
             NpmClient::create()
         );
     }
@@ -36,11 +37,11 @@ class NpmBridgeFactory
      *
      * @access private
      *
-     * @param NpmVendorFinder $vendorFinder The vendor finder to use.
+     * @param VendorFinder $vendorFinder The vendor finder to use.
      * @param NpmClient       $client       The client to use.
      */
     public function __construct(
-        NpmVendorFinder $vendorFinder,
+        VendorFinder $vendorFinder,
         NpmClient $client
     ) {
         $this->vendorFinder = $vendorFinder;

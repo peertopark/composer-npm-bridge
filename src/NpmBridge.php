@@ -16,11 +16,13 @@ use Composer\IO\IOInterface;
 use Composer\Package\PackageInterface;
 use Eloquent\Composer\NpmBridge\Exception\NpmCommandFailedException;
 use Eloquent\Composer\NpmBridge\Exception\NpmNotFoundException;
+use Eloquent\Composer\NpmBridge\Core\VendorFinder;
+use Eloquent\Composer\NpmBridge\Core\BridgeInterface;
 
 /**
  * Manages NPM installs, updates, and shrinkwrapping for Composer projects.
  */
-class NpmBridge
+class NpmBridge implements BridgeInterface
 {
     /**
      * Construct a new Composer NPM bridge plugin.
@@ -28,12 +30,12 @@ class NpmBridge
      * @access private
      *
      * @param IOInterface     $io           The i/o interface to use.
-     * @param NpmVendorFinder $vendorFinder The vendor finder to use.
+     * @param VendorFinder $vendorFinder The vendor finder to use.
      * @param NpmClient       $client       The NPM client to use.
      */
     public function __construct(
         IOInterface $io,
-        NpmVendorFinder $vendorFinder,
+        VendorFinder $vendorFinder,
         NpmClient $client
     ) {
         $this->io = $io;

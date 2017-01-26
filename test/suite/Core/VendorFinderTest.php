@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Eloquent\Composer\NpmBridge;
+namespace Eloquent\Composer\NpmBridge\Core;
 
 use Composer\Composer;
 use Composer\IO\NullIO;
@@ -18,12 +18,13 @@ use Composer\Package\Package;
 use Composer\Repository\ArrayRepository;
 use Eloquent\Phony\Phpunit\Phony;
 use PHPUnit_Framework_TestCase;
+use Eloquent\Composer\NpmBridge\NpmBridgeFactory;
 
-class NpmVendorFinderTest extends PHPUnit_Framework_TestCase
+class VendorFinderTest extends PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        $this->finder = new NpmVendorFinder();
+        $this->finder = new VendorFinder();
 
         $this->composer = new Composer();
         $this->repositoryManager = Phony::mock('Composer\Repository\RepositoryManager');
